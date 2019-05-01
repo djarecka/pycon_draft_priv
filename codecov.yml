@@ -1,3 +1,6 @@
+codecov:
+  token: 96d491cf-059a-4cbc-8e9f-a89f2ed9bb3a
+
 coverage:
   range: "0...100"
   ignore:          # files and folders that will be removed during processing
