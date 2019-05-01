@@ -11,6 +11,9 @@ def simulation_step(dt, mass, radius, loc, vel, domain):
     """ returns positions and velocities of particles after one step"""
     # TODO: should we have different raidus?
 
+    # advection
+    loc[:] = loc[:] + vel[:] * dt
+
     r12_x = squareform(pdist(loc, lambda r1, r2: r1[0] - r2[0]))
     r12_y = squareform(pdist(loc, lambda r1, r2: r1[1] - r2[1]))
     r12 = np.stack((r12_x, r12_y), axis=-1)
@@ -26,9 +29,6 @@ def simulation_step(dt, mass, radius, loc, vel, domain):
     # collisions
     for id1, id2 in zip(ind1, ind2):
         vel[id1], vel[id2] = ec.collision_2d(vel[id1], vel[id2], r12[id1, id2], mass[id1], mass[id2])
-
-    # advection
-    loc[:] = loc[:] + vel[:] * dt
 
     # find outside domain points ...
     out_left   = (loc[:, 0] < domain[0][0] + radius)
