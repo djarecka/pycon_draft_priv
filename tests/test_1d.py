@@ -7,7 +7,7 @@ import numpy as np
 import pytest
 
 def test_tmp():
-    assert 1+1 == 2
+    assert 1 == 2-1
 
 # simple pytest examples
 def test_collision_1d_1():
