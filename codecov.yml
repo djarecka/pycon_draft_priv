@@ -5,3 +5,6 @@ coverage:
   range: "0...100"
   ignore:          # files and folders that will be removed during processing
     - "pycontest/version.py"
+
+after_script:
+- codecov --file cov.xml --flags unittests -e TRAVIS_JOB_NUMBER
