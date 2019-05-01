@@ -100,7 +100,7 @@ def test_simulation_1d_fail():
     assert "two balls are exactly in the same place" in str(excinfo.value)
 
 
-#TODO - bring those up to date; We will probably not use  it
+#TODO - bring those up to date; We will probably not use it
 # but also leave one to show mark.skip
 @pytest.mark.skip(reason=" this will be infinite loop, del_x should be better defined")
 def test_simulation_collision_2():

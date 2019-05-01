@@ -25,3 +25,15 @@ def collision_2d(v1, v2, r12, m1, m2):
     v1_f = v1s + v1n_f
     v2_f = v2s + v2n_f
     return v1_f, v2_f
+
+
+def advection(loc, vel, dt):
+    # if type(loc) is list:
+    #     loc = np.array(loc)
+    # if type(vel) is list:
+    #     vel = np.array(vel)
+    if type(loc) is np.ndarray and type(vel) is np.ndarray:
+        loc[:] = loc[:] + vel[:] *dt
+    else:
+        loc = loc + vel * dt
+    return loc

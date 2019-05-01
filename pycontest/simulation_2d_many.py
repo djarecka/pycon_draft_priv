@@ -12,7 +12,7 @@ def simulation_step(dt, mass, radius, loc, vel, domain):
     # TODO: should we have different raidus?
 
     # advection
-    loc[:] = loc[:] + vel[:] * dt
+    loc = ec.advection(loc, vel, dt)
 
     r12_x = squareform(pdist(loc, lambda r1, r2: r1[0] - r2[0]))
     r12_y = squareform(pdist(loc, lambda r1, r2: r1[1] - r2[1]))
