@@ -1,7 +1,16 @@
+dist: xenial
+sudo: true
+
 language: python
 
 python:
     - "3.6"
+
+
+before_install:
+  - travis_retry bash <(wget -q -O- http://neuro.debian.net/_files/neurodebian-travis.sh);
+  - travis_retry pip install --upgrade pip setuptools wheel
+
 
 install:
     - pip install scipy
@@ -9,6 +18,7 @@ install:
     - pip install hypothesis
     - pip install matplotlib
     - pip install pytest-cov
+    - pip install .
 
 script:
     - pytest -s -v --cov pycontest --cov-config .coveragerc --cov-report xml:cov.xml tests

@@ -6,6 +6,8 @@ from pycontest.utils import momentum, E_kin
 import numpy as np
 import pytest
 
+def test_tmp():
+    assert 1+1 == 2
 
 # simple pytest examples
 def test_collision_1d_1():
