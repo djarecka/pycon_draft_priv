@@ -10,5 +10,4 @@ install:
     - pip install matplotlib
 
 script:
-    - py.test -s -v tests/test_regression.py
-    - py.test -s -v tests/test_hypothesis.py
+    - pytest --cov pydra --cov-config .coveragerc --cov-report xml:cov.xml
