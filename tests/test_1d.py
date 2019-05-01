@@ -7,9 +7,25 @@ import numpy as np
 import pytest
 
 
+# simple pytest examples
+def test_collision_1d_1():
+    v1_f, v2_f = ec.collision_1d(v1_i=1, v2_i=-2)
+    assert v1_f == -2
+    assert v2_f == 1
+
+def test_collision_1d_2():
+    v1_f, v2_f = ec.collision_1d(v1_i=1, v2_i=-2, m1=2, m2=2)
+    assert v1_f == -2
+    assert v2_f == 1
+
+def test_collision_1d_3():
+    v1_f, v2_f = ec.collision_1d(v1_i=1, v2_i=-2, m1=1, m2=1e6)
+    assert v2_f == pytest.approx(-2, rel=1e-3)
+
+
 # parametrize to show how to pass test arguments
 @pytest.mark.parametrize("dt", [0.5, 0.1, 0.01])
-def test_simulation_2d(dt):
+def test_simulation_1d(dt):
     # initial condition and simulation parameters
     domain = ([-2, 12], [0, 3])
     dt = dt
@@ -100,12 +116,12 @@ def test_simulation_1d_fail():
     assert "two balls are exactly in the same place" in str(excinfo.value)
 
 
-#TODO - bring those up to date; We will probably not use it
+#TODO - bring those up to date
 # but also leave one to show mark.skip
 @pytest.mark.skip(reason=" this will be infinite loop, del_x should be better defined")
 def test_simulation_collision_2():
     x1_f, x2_f, time_f, v1_f, v2_f = \
-        ec.simulation_collision(x1_0=0, x2_0=10, v1=3, v2=-1)
+        ec_1d.simulation_collision(x1_0=0, x2_0=10, v1=3, v2=-1)
 
 
 @pytest.mark.skip(reason=" this will be infinite loop, we're not checking if they can meet")
