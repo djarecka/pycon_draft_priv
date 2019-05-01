@@ -8,6 +8,7 @@ install:
     - pip install numpy
     - pip install hypothesis
     - pip install matplotlib
+    - pip install pytest-cov
 
 script:
     - pytest -s -v --cov pycontest --cov-config .coveragerc --cov-report xml:cov.xml tests
